@@ -8,8 +8,8 @@ USE ieee.float_pkg.ALL;
 
 ENTITY nn IS
 	PORT(
-			clk  	: IN  std_logic;
-			nrst  	: IN  std_logic;
+	    clk     : IN  std_logic;
+	    nrst    : IN  std_logic;
             r_file  : IN  std_logic;
             ot      : OUT integer
 
@@ -143,7 +143,7 @@ ARCHITECTURE behavioral OF nn IS
 
 
                 --- layer 2
-                --- W1 X A1
+                --- W1 x A1
                 FOR i1 IN 0 TO dim2 - 1 LOOP
                     FOR j1 IN 0 TO dim1 - 1 LOOP 
                         Y2(i1) <= Y2(i1) + W1(i1,j1) * A1(j1);
@@ -168,7 +168,6 @@ ARCHITECTURE behavioral OF nn IS
                 A2 <= (OTHERS => x"0000");
                 Y1 <= (OTHERS => x"0000");
                 Y2 <= (OTHERS => x"0000");
-                --maxval <= (OTHERS => 0);
            
             END IF;
         END IF;
@@ -188,8 +187,7 @@ ARCHITECTURE behavioral OF nn IS
                 max := A2(i);
                 maxval <= i;
             END IF;
-        END LOOP;
-    --ot := maxval;  
+        END LOOP;  
     END PROCESS pred;
     ot <= maxval;
 
